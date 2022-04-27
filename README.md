@@ -1,2 +1,2 @@
 # nonebot-plugin-yande
-nonebot2插件    yande色图
+能跑就行   后续完善
