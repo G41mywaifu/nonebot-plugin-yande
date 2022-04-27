@@ -23,7 +23,7 @@ async def _(bot,event):
     #print(event.message)
     await main(str(event.message))
 
-async  def dl(url):
+async  def dl(url,tags):
    
     loop = asyncio.get_event_loop()
     proxy = "http://127.0.0.1:10809"
@@ -34,7 +34,7 @@ async  def dl(url):
         async with session.get(url, proxy=proxy) as response:
             #fileName = hashlib.sha256(url.encode('utf-8')).hexdigest()+'.png'
             fileName=url.replace('https://',"").replace(".","").replace("/","")+".png"
-            async with aiofiles.open(f'png\{fileName}', 'wb') as afp:
+            async with aiofiles.open(f'png\{tags)\{fileName}', 'wb') as afp:
                   await afp.write(await response.content.read())
 
 
@@ -48,7 +48,7 @@ async def main(tags):
             if setu := [x['source'] if x['source']!="" else x['file_url'] for x in res]:
                 for setuurl in setu:
                     try:
-                        await dl(setuurl.replace('i.pximg.net','i.pixiv.re'))
+                        await dl(setuurl.replace('i.pximg.net','i.pixiv.re'),tags)
                         
                     except Exception as e:
                         print(e)
